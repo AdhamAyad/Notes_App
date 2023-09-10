@@ -7,7 +7,7 @@ class NoteItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(
+      padding:const EdgeInsets.only(
           top: 24, bottom: 24, left: 16), // padding iside container around child
 
       decoration: BoxDecoration(
@@ -39,7 +39,7 @@ class NoteItem extends StatelessWidget {
 
             trailing: IconButton(//* traling → as row       
               onPressed: () {},
-              icon: Icon(
+              icon:const Icon(
                 FontAwesomeIcons.trash,
                 size: 24,
               ),
