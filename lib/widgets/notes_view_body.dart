@@ -20,7 +20,7 @@ class NotesViewBody extends StatelessWidget {
           ),
           CustomAppBar(), // Custom AppBar
 
-          SizedBox(height: 8,), // make space
+          SizedBox(height: 16,), // make space
 
           Expanded(child: NotesListView()), // todo: Expanded → to approve his child to take all space that it can
 
