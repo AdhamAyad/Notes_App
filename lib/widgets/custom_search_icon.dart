@@ -11,6 +11,7 @@ class CustomSearchIcon extends StatelessWidget {
         decoration: BoxDecoration(
             color: Colors.white.withOpacity(.05), // todo: withOpacity → لتغيير شفافيه اللون
             borderRadius: BorderRadius.circular(16)), // حواف دائريه
+            
         child: Center(
             child: Icon(
           Icons.search_outlined,

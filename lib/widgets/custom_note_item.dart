@@ -9,36 +9,35 @@ class NoteItem extends StatelessWidget {
     return Container(
       padding: EdgeInsets.only(
           top: 24, bottom: 24, left: 16), // padding iside container around child
+
       decoration: BoxDecoration(
-        color: const Color(0XFFFFCC80),
-        borderRadius: BorderRadius.circular(16),
+        color: const Color(0XFFFFCC80), // color of continer
+        borderRadius: BorderRadius.circular(16), // حواف دائريه للكونتينار
       ),
+
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.end, // عشان التاريخ و اليوم يتحطو فى الاخر
+
         children: [
-          ListTile(
-            // todo: ListTile → take widgets and easier
+          ListTile(// todo: ListTile → take widgets and easier
+            
+            //?contentPadding:EdgeInsets.zero, // remove space that the listtile take
 
-            //contentPadding:EdgeInsets.zero, // remove space that the listtile take
-
-            title: const Text(
-              //? title → first widget as column
+            title: const Text(//* title → first widget as column              
               'Flutter Tips',
               style: TextStyle(color: Colors.black, fontSize: 26),
             ),
 
-            subtitle: Padding(
+            subtitle: Padding(//* subtitle → sec widget as column
               padding: const EdgeInsets.only(top: 16,bottom: 16),
-              child: Text(
-                //? subtitle → sec widget as column
+              child: Text(               
                 'Build Your Career With Creative',
                 style:
                     TextStyle(color: Colors.black.withOpacity(.5), fontSize: 18),
               ),
             ),
 
-            trailing: IconButton(
-              //? traling → as row
+            trailing: IconButton(//* traling → as row       
               onPressed: () {},
               icon: Icon(
                 FontAwesomeIcons.trash,
@@ -52,7 +51,7 @@ class NoteItem extends StatelessWidget {
             padding: const EdgeInsets.only(right: 24),
             child: Text(
               'May21 , 2022',
-              style: TextStyle(color: Colors.black.withOpacity(.4),fontSize: 16),
+              style: TextStyle(color: Colors.black.withOpacity(.4),fontSize: 16), //!withOpacity → الشفافيه للون 
             ),
           )
         ],
