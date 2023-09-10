@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:note_sapp/widgets/constants.dart';
 
-class CustomTextField extends StatelessWidget {
-  const CustomTextField({super.key});
-
+class CustomTextField extends StatelessWidget { 
+  const CustomTextField({super.key, required this.hint,  this.maxLines = 1});//? this.maxLines = 1 → make defult
+  final String hint;
+  final int maxLines;
   @override
   Widget build(BuildContext context) {
     return TextField(
 
       cursorColor: kPrimaryColor, //! cursor color when write
+      maxLines: maxLines, //! نسبه حجمه الطبيعى  , defult = 1
 
       decoration: InputDecoration(
 
-        hintText: 'Title', //? hint text on text field
+        hintText: hint, //? hint text on text field
         hintStyle: const TextStyle(color: kPrimaryColor),//? change hinttext color
 
         border: buildBorder(),//? General Border

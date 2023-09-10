@@ -16,7 +16,7 @@ class NotesView extends StatelessWidget {
             ),
           context: context,
            builder: (context){ // todo: bottmsheet flixable option
-          return const AddNoteButtomSheet();
+          return const AddNoteButtomSheet(); //? that inside bottomsheet
         });
 
       },
