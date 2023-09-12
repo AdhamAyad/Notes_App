@@ -10,12 +10,15 @@ class NotesView extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Scaffold(
       floatingActionButton: FloatingActionButton(onPressed: (){
-        showModalBottomSheet( //! to edit on buyyomsheet → edit on it directily
+        showModalBottomSheet( //! to edit on buyyomsheet→edit on it directily, and to make it
+          
+          //? decoration of buttom sheet
           shape:  RoundedRectangleBorder( // ? shape → to edit on bottomsheet
             borderRadius: BorderRadius.circular(16) // make it circuler
             ),
-          context: context,
-           builder: (context){ // todo: bottmsheet flixable option
+          
+          //? what will show when buttomsheet appear
+          context: context, builder: (context){ // todo: bottmsheet flixable option
           return const AddNoteButtomSheet(); //? that inside bottomsheet
         });
 
