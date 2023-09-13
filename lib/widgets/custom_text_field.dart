@@ -1,16 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:note_sapp/widgets/constants.dart';
 
-class CustomTextField extends StatelessWidget { 
-  const CustomTextField({super.key, required this.hint,  this.maxLines = 1});//? this.maxLines = 1 → make defult
+class CustomTextFormField extends StatelessWidget { 
+  const CustomTextFormField({super.key, required this.hint,  this.maxLines = 1, this.onSaved});//? this.maxLines = 1 → make defult
   final String hint;
   final int maxLines;
+  final void Function(String?)? onSaved;
   @override
   Widget build(BuildContext context) {
-    return TextField(
-
+    return TextFormField(
+      onSaved: onSaved, //! take data that into textfeild when saved
       cursorColor: kPrimaryColor, //! cursor color when write
       maxLines: maxLines, //! نسبه حجمه الطبيعى  , defult = 1
+
+      validator: (value) { //? validator → check for data is its empty
+        if (value?.isEmpty?? true) {
+          return'Feild Is Reqired';
+        }else{
+          return null;
+        }
+      },
 
       decoration: InputDecoration(
 

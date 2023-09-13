@@ -11,23 +11,63 @@ class AddNoteButtomSheet extends StatelessWidget {
     return const Padding(
       padding:  EdgeInsets.symmetric(horizontal: 16),
       child:  SingleChildScrollView(//! make page scrollable , make her child take small space
-        child: Column(
-          children:  [
-            SizedBox(height: 32 ,),
-            
-            CustomTextField(hint: 'Title',),//* maxLines: 1 → as defult
-      
-            SizedBox(height: 16,),
-      
-            CustomTextField(hint: 'Content', maxLines: 5,), //? 4 → كدا بخليه اربع اضعاف حجمه الطبيعى
-            
-            SizedBox(height: 40,),
-            
-            CustomButton(),
+        child: AddNoteForm(),
+      ),
+    );
+  }
+}
 
-            SizedBox(height: 16,),
-          ],
-        ),
+class AddNoteForm extends StatefulWidget {
+  const AddNoteForm({
+    super.key,
+  });
+
+  @override
+  State<AddNoteForm> createState() => _AddNoteFormState();
+}
+
+class _AddNoteFormState extends State<AddNoteForm> {
+  final GlobalKey <FormState> formKey = GlobalKey();//? key for form to can run
+  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
+  String? title,subTitle; //? if variable not const or final must puted in stateful
+  @override
+  Widget build(BuildContext context) {
+    return  Form(
+      key: formKey,
+
+      child:  Column(
+        children:  [
+         const SizedBox(height: 32 ,),
+          
+          CustomTextFormField(hint: 'Title',onSaved: (value) {
+            title= value;
+            
+          },),//* maxLines: 1 → as defult
+        
+         const SizedBox(height: 16,),
+        
+          CustomTextFormField(hint: 'Content', maxLines: 5,onSaved: (value) {
+            subTitle= value;
+            
+          },), //? 4 → كدا بخليه اربع اضعاف حجمه الطبيعى
+          
+         const SizedBox(height: 40,),
+          
+          CustomButton(onTap: () {
+            if(formKey.currentState!.validate()) //? when click go form and form will see textfield state if in validator is ok will make save
+            {
+              formKey.currentState!.save();
+            }
+            else{
+              autovalidateMode = AutovalidateMode.always; // validate again
+              setState(() { //! to change UI
+                
+              });
+            }
+          },),
+    
+         const SizedBox(height: 16,),
+        ],
       ),
     );
   }
