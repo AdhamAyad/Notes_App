@@ -27,13 +27,18 @@ class AddNoteForm extends StatefulWidget {
 }
 
 class _AddNoteFormState extends State<AddNoteForm> {
+
   final GlobalKey <FormState> formKey = GlobalKey();//? key for form to can run
+
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
+
   String? title,subTitle; //? if variable not const or final must puted in stateful
+
   @override
   Widget build(BuildContext context) {
     return  Form(
-      key: formKey,
+      autovalidateMode: autovalidateMode, // todo: to work with form
+      key: formKey, // todo: get key with FormState type
 
       child:  Column(
         children:  [
@@ -56,13 +61,11 @@ class _AddNoteFormState extends State<AddNoteForm> {
           CustomButton(onTap: () {
             if(formKey.currentState!.validate()) //? when click go form and form will see textfield state if in validator is ok will make save
             {
-              formKey.currentState!.save();
+              formKey.currentState!.save(); //? save data
             }
             else{
-              autovalidateMode = AutovalidateMode.always; // validate again
-              setState(() { //! to change UI
-                
-              });
+              autovalidateMode = AutovalidateMode.always; //? validate again and if write any thing it works
+              //setState(() { /*! to change UI*/}); // dont need to use it
             }
           },),
     
