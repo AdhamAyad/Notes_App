@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:note_sapp/widgets/constants.dart';
 
 class CustomTextFormField extends StatelessWidget { 
-  const CustomTextFormField({super.key, required this.hint,  this.maxLines = 1, this.onSaved});//? this.maxLines = 1 → make defult
+  const CustomTextFormField({super.key, required this.hint,  this.maxLines = 1, this.onSaved, this.onChanged});//? this.maxLines = 1 → make defult
   final String hint;
   final int maxLines;
   final void Function(String?)? onSaved;
+  final Function(String)? onChanged;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onChanged: onChanged,
       onSaved: onSaved, //! take data that into textfeild when saved
       cursorColor: kPrimaryColor, //! cursor color when write
       maxLines: maxLines, //! نسبه حجمه الطبيعى  , defult = 1
