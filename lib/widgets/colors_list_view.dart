@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:note_sapp/cubits/add_note_cubit/add_note_cubit.dart';
+
+import 'constants.dart';
 
 class ColorItem extends StatelessWidget {
   const ColorItem({super.key, required this.isSelected, required this.color});
@@ -8,7 +12,7 @@ class ColorItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return isSelected ?  CircleAvatar( //? if true do this
-      radius: 25,
+      radius: 26,
       backgroundColor: Colors.white,
       child:  CircleAvatar(
         radius: 23,
@@ -30,41 +34,26 @@ class ColorsListView extends StatefulWidget {
 
 class _ColorsListViewState extends State<ColorsListView> {
   int currentIndex = 0 ; //? intial variable
-  List<Color> colors = const [
-    Color(0XFF2A2D34),
-    Color(0XFF009DDC),
-    Color(0XFFF26430),
-    Color(0XFF6761A8),
-    Color(0XFF009B72),
-    Color(0XFFFFAEBC),
-    Color(0XFFA0E7E5),
-    Color(0XFFB4F8C8),
-    Color(0XFFFBE7C6),
-    // Colors.red,
-    // Colors.blue,
-    // Colors.orange,
-    // Colors.black,
-    // Colors.white,
-
-  ];
+  
   @override
   Widget build(BuildContext context) {
     return  SizedBox(
       height: 52, // todo: radius: 26, 26*2 = 52
       child: ListView.builder(
         scrollDirection : Axis.horizontal,
-        itemCount: colors.length,
+        itemCount: kColors.length,
         itemBuilder: (context,index){
         return  Padding(
           padding: const EdgeInsets.symmetric(horizontal: 4),
           child:  GestureDetector(
             onTap: () {
               currentIndex = index; //! when click give currentIndex same value of index
+              BlocProvider.of<AddNoteCubit>(context).color = kColors[index]; //! take color that user choose
               setState(() {
                 
               });
             },//! when currentIndex same value of index return true and change UI
-            child: ColorItem(isSelected: currentIndex == index, color: colors[index],)),
+            child: ColorItem(isSelected: currentIndex == index, color: kColors[index],)),
         );
       }),
     );

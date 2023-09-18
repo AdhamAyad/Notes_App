@@ -58,8 +58,9 @@ class _AddNoteFormState extends State<AddNoteForm> {
           const SizedBox(
             height: 16,
           ),
-
-          const ColorsListView(),
+          //* كان ممكن اكسسز اوبجكت و احط كل حاجه على حدا و بعدها اديه ل الليست و اديه منها اللون
+          //* فى الاخر خالص كنت اعمله ادد توبجكت
+          const ColorsListView(), //? choose color of note
 
          const SizedBox(height: 16,),
 
