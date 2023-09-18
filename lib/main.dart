@@ -20,7 +20,7 @@ class NotesApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider( //! to make one cubit or more
+    return MultiBlocProvider( //! MultiBlocProvider →  to make one cubit or more
       providers: [
         BlocProvider(create: (context)=> AddNoteCubit()), //? starts addnotecubit
       ],
