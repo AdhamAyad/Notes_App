@@ -49,7 +49,9 @@ class NoteItem extends StatelessWidget {
               ),
     
               trailing: IconButton(//* traling → as row       
-                onPressed: () {},
+                onPressed: () {
+                  note.delete(); //! delete object mean in hive that this thing deleted
+                },
                 icon:const Icon(
                   FontAwesomeIcons.trash,
                   size: 24,
