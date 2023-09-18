@@ -4,8 +4,8 @@ import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:note_sapp/cubits/add_note_cubit/add_note_cubit.dart';
 import 'add_note_form.dart';
 
-class AddNoteButtomSheet extends StatelessWidget {
-  const AddNoteButtomSheet({super.key});
+class AddNoteButtomSheet extends StatelessWidget { //! دا المكان الى الواجهه بتتغير فيه عشان كدا حطيت عليه البلوك
+  const AddNoteButtomSheet({super.key});//? this is the place that state changes into
 
   @override
   Widget build(BuildContext context) {
