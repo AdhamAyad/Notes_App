@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:note_sapp/cubits/notes_cubit/notes_cubit.dart';
 import '../widgets/add_note_buttom_sheet.dart';
 import '../widgets/notes_view_body.dart';
 
@@ -8,32 +9,41 @@ class NotesView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      floatingActionButton: Padding(
-        padding: const EdgeInsets.only(bottom: 16),// move floating action buttom from buttom
+    
+    return BlocProvider( //! to provide this code to use this bloc
+      create: (context) => NotesCubit(),
 
-        child: FloatingActionButton(onPressed: (){
-          showModalBottomSheet( //! to edit on buyyomsheet→edit on it directily, and to make it
-            isScrollControlled: true, //? enaable botton sheet to scroll when keyboard uses
-            //? decoration of buttom sheet
-            shape:  RoundedRectangleBorder( // ? shape → to edit on bottomsheet
-              borderRadius: BorderRadius.circular(16) // make it circuler
-              ),
-            
-            //? what will show when buttomsheet appear
-            context: context, builder: (context){ // todo: bottmsheet flixable option
-            return const AddNoteButtomSheet(); //? that inside bottomsheet
-          });
-      
-        },
-         child:const Icon(Icons.add),),
+      child: Scaffold(
+        floatingActionButton: Padding(
+          padding: const EdgeInsets.only(
+              bottom: 16), // move floating action buttom from buttom
+
+          child: FloatingActionButton(
+            onPressed: () {
+              showModalBottomSheet(
+                  //! to edit on buyyomsheet→edit on it directily, and to make it
+                  isScrollControlled:
+                      true, //? enaable botton sheet to scroll when keyboard uses
+                  //? decoration of buttom sheet
+                  shape: RoundedRectangleBorder(
+                      // ? shape → to edit on bottomsheet
+                      borderRadius:
+                          BorderRadius.circular(16) // make it circuler
+                      ),
+
+                  //? what will show when buttomsheet appear
+                  context: context,
+                  builder: (context) {
+                    // todo: bottmsheet flixable option
+                    return const AddNoteButtomSheet(); //? that inside bottomsheet
+                  });
+            },
+            child: const Icon(Icons.add),
+          ),
+        ),
+
+        body: const NotesViewBody(), //! code will be clean
       ),
-
-      body:const NotesViewBody(), //! code will be clean
     );
   }
 }
-
-
-
-
