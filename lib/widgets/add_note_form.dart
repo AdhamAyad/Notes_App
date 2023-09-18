@@ -56,12 +56,12 @@ class _AddNoteFormState extends State<AddNoteForm> {
           ), //? 4 → كدا بخليه اربع اضعاف حجمه الطبيعى
 
           const SizedBox(
-            height: 24,
+            height: 16,
           ),
 
           const ColorsListView(),
 
-         const SizedBox(height: 24,),
+         const SizedBox(height: 16,),
 
           BlocBuilder<AddNoteCubit, AddNoteState>( //? blocbuilder → that changes UI dependens on state
             builder: (context, state) {
