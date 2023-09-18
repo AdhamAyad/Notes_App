@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:note_sapp/cubits/add_note_cubit/add_note_cubit.dart';
 import 'package:note_sapp/models/note_model.dart';
+import 'colors_list_view.dart';
 import 'custom_buttom.dart';
 import 'custom_text_field.dart';
 
@@ -55,8 +56,12 @@ class _AddNoteFormState extends State<AddNoteForm> {
           ), //? 4 → كدا بخليه اربع اضعاف حجمه الطبيعى
 
           const SizedBox(
-            height: 40,
+            height: 24,
           ),
+
+          const ColorsListView(),
+
+         const SizedBox(height: 24,),
 
           BlocBuilder<AddNoteCubit, AddNoteState>( //? blocbuilder → that changes UI dependens on state
             builder: (context, state) {
@@ -99,3 +104,5 @@ class _AddNoteFormState extends State<AddNoteForm> {
     );
   }
 }
+
+
