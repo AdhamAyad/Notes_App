@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:note_sapp/models/note_model.dart';
 
 import '../views/edit_note_view.dart';
 
 
 
 class NoteItem extends StatelessWidget {
-  const NoteItem({super.key});
-
+  const NoteItem({super.key, required this.note});
+  final NoteModel note;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -21,7 +22,7 @@ class NoteItem extends StatelessWidget {
             top: 24, bottom: 24, left: 16), // padding iside container around child
     
         decoration: BoxDecoration(
-          color: const Color(0XFFFFCC80), // color of continer
+          color:  Color(note.color), // color of continer
           borderRadius: BorderRadius.circular(16), // حواف دائريه للكونتينار
         ),
     
@@ -33,17 +34,17 @@ class NoteItem extends StatelessWidget {
               
               //?contentPadding:EdgeInsets.zero, // remove space that the listtile take
     
-              title: const Text(//* title → first widget as column              
-                'Flutter Tips',
-                style: TextStyle(color: Colors.black, fontSize: 26),
+              title:  Text(//* title → first widget as column              
+                note.title,
+                style: const TextStyle(color: Colors.black, fontSize: 26),
               ),
     
               subtitle: Padding(//* subtitle → sec widget as column
-                padding: const EdgeInsets.only(top: 16,bottom: 16),
+                padding: const  EdgeInsets.only(top: 16,bottom: 16),
                 child: Text(               
-                  'Build Your Career With Creative',
+                  note.subTitle,
                   style:
-                      TextStyle(color: Colors.black.withOpacity(.5), fontSize: 18),
+                       TextStyle(color: Colors.black.withOpacity(.4), fontSize: 18),
                 ),
               ),
     
@@ -60,7 +61,7 @@ class NoteItem extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(right: 24),
               child: Text(
-                'May21 , 2022',
+                '${DateTime.parse(note.date).day}/${DateTime.parse(note.date).month}/${DateTime.parse(note.date).year}',
                 style: TextStyle(color: Colors.black.withOpacity(.4),fontSize: 16), //!withOpacity → الشفافيه للون 
               ),
             )
