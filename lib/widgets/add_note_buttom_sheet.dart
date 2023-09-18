@@ -30,11 +30,13 @@ class AddNoteButtomSheet extends StatelessWidget {
           }
         },
         builder: (context, state) {
-          return AbsorbPointer(
+          return  AbsorbPointer(
             absorbing: state is AddNoteLoading ? true :false, //! when it is true it make user not able to make any thing
-            child:const Padding(
-              padding:  EdgeInsets.symmetric(horizontal: 16),
-              child:  SingleChildScrollView(
+            child: Padding(
+              padding:  EdgeInsets.only(left: 16,right: 16,
+              bottom: MediaQuery.of(context).viewInsets.bottom //? give it size of keyboard
+              ),
+              child: const SingleChildScrollView(
                   child:
                       AddNoteForm()),
             ),

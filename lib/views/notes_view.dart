@@ -14,7 +14,7 @@ class NotesView extends StatelessWidget {
 
         child: FloatingActionButton(onPressed: (){
           showModalBottomSheet( //! to edit on buyyomsheet→edit on it directily, and to make it
-            
+            isScrollControlled: true, //? enaable botton sheet to scroll when keyboard uses
             //? decoration of buttom sheet
             shape:  RoundedRectangleBorder( // ? shape → to edit on bottomsheet
               borderRadius: BorderRadius.circular(16) // make it circuler
