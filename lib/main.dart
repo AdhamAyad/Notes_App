@@ -8,10 +8,11 @@ import 'package:note_sapp/views/notes_view.dart';
 import 'package:note_sapp/widgets/constants.dart';
 
 void main() async{
-  Bloc.observer = SimpleBlocObserver();
+  
+  Bloc.observer = SimpleBlocObserver(); //? put it in main to enable it to work
   await Hive.initFlutter(); //! make it to start Hive
-  await Hive.openBox(kNotesBox); //! box that we will store inside
-  Hive.registerAdapter(NoteModelAdapter()); //! to start stor as this model
+  Hive.registerAdapter(NoteModelAdapter()); //! to start stor as object of this model
+  await Hive.openBox<NoteModel>(kNotesBox); //! box that we will store inside with model type
 
   runApp(const NotesApp());
 }
@@ -21,20 +22,14 @@ class NotesApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider( //! MultiBlocProvider →  to make one cubit or more
-      providers: [
-        BlocProvider(create: (context)=> AddNoteCubit()), //? starts addnotecubit
-      ],
-      child: MaterialApp(
-        
-        debugShowCheckedModeBanner: false, 
-        theme: ThemeData(brightness: Brightness.dark,// todo: cahnge theme  of app , themdata.dark()
-        //? scaffoldBackgroundColor: Colors.black, // make theme with color black
-        fontFamily: 'Poppins' //! this font will apply on all app
-        ), 
-        
-        home: const NotesView() ,
-      ),
+    return MaterialApp(      
+      debugShowCheckedModeBanner: false, 
+      theme: ThemeData(brightness: Brightness.dark,// todo: cahnge theme  of app , themdata.dark()
+      //? scaffoldBackgroundColor: Colors.black, // make theme with color black
+      fontFamily: 'Poppins' //! this font will apply on all app
+      ), 
+      
+      home: const NotesView() ,
     );
   }
 }

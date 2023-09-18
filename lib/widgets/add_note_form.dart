@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:note_sapp/cubits/add_note_cubit/add_note_cubit.dart';
+import 'package:note_sapp/models/note_model.dart';
 import 'custom_buttom.dart';
 import 'custom_text_field.dart';
 
@@ -46,7 +49,13 @@ class _AddNoteFormState extends State<AddNoteForm> {
           CustomButton(onTap: () {
             if(formKey.currentState!.validate()) //? when click go form and form will see textfield state if in validator is ok will make save
             {
+              //! هنا بستخدم الفكشن الى جوا البلوك و دا اول استخدام للبلوك دا فعليا
+              //! this is the place that changes state from after this UI changes
               formKey.currentState!.save(); //? save data
+              //? make model to give it to function to add it by hive in local data base
+              var noteModel = NoteModel(title: title!, subTitle: subTitle!, date: DateTime.now().toString(), color: Colors.blue.value); //? value → return value as int 
+              //! make object of cubit to use function that inside and thats cahnges state
+              BlocProvider.of<AddNoteCubit>(context).addNote(noteModel); //? that will save in data base
             }
             else{
               autovalidateMode = AutovalidateMode.always; //? validate again and if write any thing it works

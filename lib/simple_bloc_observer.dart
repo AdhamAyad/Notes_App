@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class SimpleBlocObserver implements BlocObserver
+class SimpleBlocObserver implements BlocObserver //! debug state → حاجه بتورينى انا رايح فين 
+//! او اى الاستيت الى وصلتلها
 {
   @override
   void onChange(BlocBase bloc, Change change) {
@@ -12,11 +13,13 @@ class SimpleBlocObserver implements BlocObserver
   @override
   void onClose(BlocBase bloc) {
     // TODO: implement onClose
+    debugPrint('close = $bloc');
   }
 
   @override
   void onCreate(BlocBase bloc) {
     // TODO: implement onCreate
+    debugPrint('create = $bloc');
   }
 
   @override
