@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:note_sapp/cubits/add_note_cubit/add_note_cubit.dart';
 import 'package:note_sapp/models/note_model.dart';
 import 'custom_buttom.dart';
@@ -68,11 +69,13 @@ class _AddNoteFormState extends State<AddNoteForm> {
                     //! هنا بستخدم الفكشن الى جوا البلوك و دا اول استخدام للبلوك دا فعليا
                     //! this is the place that changes state from after this UI changes
                     formKey.currentState!.save(); //? save data
+                    var currentDate = DateTime.now();
+                    var formattedCurrentDate = DateFormat.yMd().format(currentDate);
                     //? make model to give it to function to add it by hive in local data base
                     var noteModel = NoteModel(
                         title: title!,
                         subTitle: subTitle!,
-                        date: DateTime.now().toString(),
+                        date: formattedCurrentDate,
                         color:
                             Colors.blue.value); //? value → return value as int
                     //! make object of cubit to use function that inside and thats cahnges state

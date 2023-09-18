@@ -61,7 +61,8 @@ class NoteItem extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(right: 24),
               child: Text(
-                '${DateTime.parse(note.date).day}/${DateTime.parse(note.date).month}/${DateTime.parse(note.date).year}',
+                note.date,
+                //'${DateTime.parse(note.date).day}/${DateTime.parse(note.date).month}/${DateTime.parse(note.date).year}',
                 style: TextStyle(color: Colors.black.withOpacity(.4),fontSize: 16), //!withOpacity → الشفافيه للون 
               ),
             )
