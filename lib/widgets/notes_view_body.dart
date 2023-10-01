@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../cubits/notes_cubit/notes_cubit.dart';
+import '../views/search_note_view.dart';
 import 'custom_app_bar.dart';
 import 'notes_list_view.dart';
 
@@ -18,20 +19,24 @@ class NotesViewBody extends StatelessWidget {
     //initState();
      BlocProvider.of<NotesCubit>(context).getAllNotes(); //! befor build body run method to get data
     
-    return const Padding(
-      padding:  EdgeInsets.symmetric(horizontal: 16),// make space from left and right 
+    return  Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),// make space from left and right 
       child: Column(
         children:  [
 
-          SizedBox(
+         const SizedBox(
             height: 50,
           ),
-          CustomAppBar(title: 'Notes',icon: Icons.search_outlined,), // Custom AppBar
+          CustomAppBar(title: 'Notes',icon: Icons.search_outlined,onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context){
+              return const SearchNote();
+            }));
+     
+          },), // Custom AppBar
 
-          SizedBox(height: 16,), // make space
-
-          Expanded(child: NotesListView()), // todo: Expanded → to approve his child to take all space that it can
-
+         const SizedBox(height: 16,), // make space
+         
+         const Expanded(child: NotesListView()), // todo: Expanded → to approve his child to take all space that it can
           
         ],
       ),

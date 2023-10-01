@@ -33,7 +33,7 @@ class ColorsListView extends StatefulWidget {
 }
 
 class _ColorsListViewState extends State<ColorsListView> {
-  int currentIndex = 0 ; //? intial variable
+  int currentIndex = 5 ; //? intial variable
   
   @override
   Widget build(BuildContext context) {
@@ -49,9 +49,8 @@ class _ColorsListViewState extends State<ColorsListView> {
             onTap: () {
               currentIndex = index; //! when click give currentIndex same value of index
               BlocProvider.of<AddNoteCubit>(context).color = kColors[index]; //! take color that user choose
-              setState(() {
-                
-              });
+              setState(() {});
+              
             },//! when currentIndex same value of index return true and change UI
             child: ColorItem(isSelected: currentIndex == index, color: kColors[index],)),
         );

@@ -26,6 +26,7 @@ class AddNoteButtomSheet extends StatelessWidget {
           }
           if (state is AddNoteSuccess) //? if state is success change UI pop
           {
+            //? اول ما يخزن النوت الجديده بخليه يقرا عشان يخزن النوت الجديده فى الليست
             BlocProvider.of<NotesCubit>(context).getAllNotes(); //! when add Success reapeat geting data again to update UI
             Navigator.pop(context); //? if got good return back
           }

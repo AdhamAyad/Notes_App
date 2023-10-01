@@ -42,6 +42,6 @@ class _EditNoteColorListState extends State<EditNoteColorList> {
             child: ColorItem(isSelected: currentIndex == index, color: kColors[index],)),
         );
       }),
-    );;
+    );
   }
 }
