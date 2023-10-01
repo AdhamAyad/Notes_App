@@ -15,6 +15,7 @@ class SearchNotesListView extends StatelessWidget {
 
         builder: (context, state) {
           //fetch filtered notes list
+           BlocProvider.of<NotesCubit>(context).getAllNotes();
            List<NoteModel>? filteredNoteList= BlocProvider.of<NotesCubit>(context).filteredNoteList;
            List<NoteModel> notes = BlocProvider.of<NotesCubit>(context).notes!;
            
