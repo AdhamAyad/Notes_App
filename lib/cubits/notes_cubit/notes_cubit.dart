@@ -11,7 +11,7 @@ part 'notes_state.dart';
 //! cubit → logic , state → UI changing , and cubit tell by logic to emit tje state
 class NotesCubit extends Cubit<NotesState> {
   NotesCubit() : super(NotesInitial());
-List<NoteModel>? filteredNoteList;
+ List<NoteModel>? filteredNoteList;
  List<NoteModel>? notes; //? list that have all notes
   getAllNotes()
   {
@@ -25,8 +25,7 @@ List<NoteModel>? filteredNoteList;
 
   //search by title and get all notes have that title
   searchNote(String search) {
-    filteredNoteList =
-        notes!.where((s) => s.title.startsWith(search)).toList();
+    filteredNoteList = notes!.where((s) => s.title.startsWith(search)).toList();
         emit(NotesSuccess()); //! make emit here to change UI in listView in search view
   }
 }

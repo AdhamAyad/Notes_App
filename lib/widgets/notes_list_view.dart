@@ -14,6 +14,8 @@ class NotesListView extends StatelessWidget {
       builder: (context, state) {
 
         List<NoteModel> notes = BlocProvider.of<NotesCubit>(context).notes!;
+         //notes.reversed;
+         var reversedNotes = notes.reversed.toList();//? to revers our list that contains nots
         
         return Padding(
           padding: const EdgeInsets.symmetric(vertical: 16),
@@ -23,7 +25,7 @@ class NotesListView extends StatelessWidget {
               itemBuilder: (context, index) {
                 return  Padding(
                   padding:const EdgeInsets.symmetric(vertical: 4),
-                  child: NoteItem(note: notes[index],),
+                  child: NoteItem(note: reversedNotes[index],),
                 );
               }),
         );

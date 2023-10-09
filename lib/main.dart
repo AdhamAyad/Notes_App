@@ -11,10 +11,8 @@ import 'cubits/notes_cubit/notes_cubit.dart';
 void main() async {
   Bloc.observer = SimpleBlocObserver(); //? put it in main to enable it to work
   await Hive.initFlutter(); //! make it to start Hive
-  Hive.registerAdapter(
-      NoteModelAdapter()); //! to start stor as object of this model
-  await Hive.openBox<NoteModel>(
-      kNotesBox); //! box that we will store inside with model type
+  Hive.registerAdapter(NoteModelAdapter()); //! to start stor as object of this model
+  await Hive.openBox<NoteModel>(kNotesBox); //! box that we will store inside with model type 
 
   runApp(const NotesApp());
 }
