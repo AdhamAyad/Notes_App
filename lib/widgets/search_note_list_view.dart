@@ -15,24 +15,24 @@ class SearchNotesListView extends StatelessWidget {
 
         builder: (context, state) {
           //fetch filtered notes list
-           BlocProvider.of<NotesCubit>(context).getAllNotes();
-           List<NoteModel>? filteredNoteList= BlocProvider.of<NotesCubit>(context).filteredNoteList;
-           List<NoteModel> notes = BlocProvider.of<NotesCubit>(context).notes!;
+           //BlocProvider.of<NotesCubit>(context).getAllNotes();
+           List<NoteModel> filteredNoteList= BlocProvider.of<NotesCubit>(context).filteredNoteList!;
+           //List<NoteModel> notes = BlocProvider.of<NotesCubit>(context).notes!;
+           filteredNoteList = filteredNoteList.reversed.toList();
            
           return Padding(
             padding: const EdgeInsets.only(top: 16, bottom: 4),
 
             child: ListView.builder(
               padding: EdgeInsets.zero,
-              itemCount: filteredNoteList== null ? notes.length : filteredNoteList.length,
+              itemCount: filteredNoteList.length,
 
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.symmetric(vertical: 4),
 
                   child: NoteItem(
-                    note: filteredNoteList== null ? notes[index] : filteredNoteList[index] ,
-
+                    note: filteredNoteList[index] ,
                   ),
                 );
               },

@@ -18,6 +18,7 @@ class NotesViewBody extends StatelessWidget {
     
     //initState();
      BlocProvider.of<NotesCubit>(context).getAllNotes(); //! befor build body run method to get data
+     BlocProvider.of<NotesCubit>(context).searchNote('');
     
     return  Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),// make space from left and right 
@@ -35,6 +36,8 @@ class NotesViewBody extends StatelessWidget {
           },), // Custom AppBar
 
          const SizedBox(height: 16,), // make space
+
+         
          
          const Expanded(child: NotesListView()), // todo: Expanded → to approve his child to take all space that it can
           
