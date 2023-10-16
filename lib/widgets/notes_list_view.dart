@@ -14,7 +14,7 @@ class NotesListView extends StatelessWidget {
     listener: (context, state) {
       if(state is NotesSuccess)
       {
-        _controller.animateTo(0,
+        _controller.animateTo(_controller.position.minScrollExtent, //?  or 0 to go to the firsts
                           duration:const Duration(milliseconds: 500),
                           curve: Curves.easeIn);
       }
