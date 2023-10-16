@@ -39,7 +39,7 @@ class NotesViewBody extends StatelessWidget {
 
          
          
-         const Expanded(child: NotesListView()), // todo: Expanded → to approve his child to take all space that it can
+          Expanded(child: NotesListView()), // todo: Expanded → to approve his child to take all space that it can
           
         ],
       ),
